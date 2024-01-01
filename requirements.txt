@@ -3,10 +3,8 @@ torchvision
 opencv-python
 numpy
 Pillow
-DateTime
 matplotlib
 plyfile
-HTML4Vision
 timm
 tensorboardX
 imgaug
