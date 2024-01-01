@@ -1,10 +1,6 @@
 import os
 import torch
-import torch.nn as nn
-from mono.utils.comm import main_process
-import copy
-import inspect
-import logging
+from metric3d.utils.comm import main_process
 import glob
 
 
@@ -12,10 +8,7 @@ def load_ckpt(load_path, model, optimizer=None, scheduler=None, strict_match=Tru
     """
     Load the check point for resuming training or finetuning.
     """
-    logger = logging.getLogger()
     if os.path.isfile(load_path):
-        if main_process():
-            logger.info(f"Loading weight '{load_path}'")
         checkpoint = torch.load(load_path, map_location="cpu")
         ckpt_state_dict  = checkpoint['model_state_dict']
         model.module.load_state_dict(ckpt_state_dict, strict=strict_match)
@@ -28,10 +21,6 @@ def load_ckpt(load_path, model, optimizer=None, scheduler=None, strict_match=Tru
             scheduler.load_state_dict(checkpoint['scaler'])
         del ckpt_state_dict
         del checkpoint
-        if main_process():
-            logger.info(f"Successfully loaded weight: '{load_path}'")
-            if scheduler is not None and optimizer is not None:
-                logger.info(f"Resume training from: '{load_path}'")
     else:
         if main_process():
             raise RuntimeError(f"No weight found at '{load_path}'")

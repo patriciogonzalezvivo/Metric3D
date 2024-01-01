@@ -1,9 +1,7 @@
 import collections
 import cv2
-import math
 import numpy as np
 import numbers
-import random
 import torch
 
 import matplotlib
@@ -391,7 +389,7 @@ def build_camera_model(H : int, W : int, intrinsics : list) -> np.array:
     cam_model = np.stack([x_center, y_center, fov_x, fov_y], axis=2)
     return cam_model
 
-def gray_to_colormap(img, cmap='rainbow'):
+def gray_to_colormap(img, cmap='jet'):
     """
     Transfer gray map to matplotlib colormap
     """

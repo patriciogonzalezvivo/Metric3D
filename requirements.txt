@@ -12,4 +12,3 @@ tensorboardX
 imgaug
 iopath
 imagecorruptions
-mmcv

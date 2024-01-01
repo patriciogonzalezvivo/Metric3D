@@ -1,5 +1,5 @@
 from types import ModuleType
-import data_info
+import metric3d.data_info as data_info
 
 def load_data_info(module_name, data_info={}, mldb_type='mldb_info', module=None):
     if module is None:

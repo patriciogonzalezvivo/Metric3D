@@ -1,9 +1,6 @@
 import numpy as np
 import torch
 import torch.distributed as dist
-import torch.nn.functional as F
-import matplotlib.pyplot as plt
-
 
 class AverageMeter(object):
     """Computes and stores the average and current value"""
